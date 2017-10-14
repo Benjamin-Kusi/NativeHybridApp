@@ -7,9 +7,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 //We decide to create a function to handle the 3rd party functions (eg. navigator.geolocation.getCurrentPosition)
 // which we earlier added to the native functions of the javascript
-function onDeviceReady() {
+/*function onDeviceReady() {
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
-}
+}*/
 
 // onSuccess Geolocation
 //
@@ -31,4 +31,8 @@ function onSuccess(position) {
 function onError(error) {
     alert('code: '    + error.code    + '\n' +
         'message: ' + error.message + '\n');
+}
+
+function getPosition(){
+    navigator.geolocation.getCurrentPosition(onSuccess,onError);
 }
