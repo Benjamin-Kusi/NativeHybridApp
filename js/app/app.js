@@ -82,5 +82,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.open(map);
 }
 
+function clearMap(){
+    var element = document.getElementById('map');
+    element.innerHTML = "<center><b><h1>Map was cleared successfully!</h1></b></center>";
+}
+
 /*Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
 startActivity(intent);*/
