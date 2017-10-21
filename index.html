@@ -29,34 +29,48 @@
   <script src="js/app/app.js"></script>
   <script src="js/app/bootstrap.js"></script>
   <!--<script src="js/lib/jquery.mobile.js"></script>-->
-  <script type="text/javascript" async defer src="js/app/map.js"></script>
+  <!--<script type="text/javascript" async defer src="js/app/map.js"></script>-->
   <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>-->
   <!--<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
-
+  
 
   </head>
   <body>
+    <script>
+      function myMap() {
+      var mapProp= {
+          center:new google.maps.LatLng(51.508742,-0.120850),
+          zoom:5,
+      };
+      var map=new google.maps.Map(document.getElementById("map"),mapProp);
+      }
+  </script>
     <div id="map"></div>
     <div data-role="page">
 
-    	<div data-role="header" class="container">
+    	<!--<div data-role="header" class="container">
     		<h1 style="color: white;">Welcome to the location Finder.</h1>
-    	</div><!-- /header -->
+    	</div>-->
+      <!-- /header -->
 
-    	<div data-role="content" class="container">
+    	<!--<div data-role="content" class="container">
             <p id="geolocation">
                 <h3 style="color: white;">Let's Begin!</h3>
             </p>
-    	</div><!-- /content -->
-    	<div id="findGeo" class="container">
+    	</div>-->
+      <!-- /content -->
+    	<!--<div id="findGeo" class="container">
     		<input type="button" class="btn btn-info" name="findGeolocation" value="Find Geolocation" onclick="getPosition()" />
         <input type="button" class="btn btn-info" name="clearmap" value="Clear Map" onclick="clearMap()" />
-    	</div>
+    	</div> data-role="footer"-->
 
-    	<div data-role="footer" class="container">
-    		<h3 style="color: white;">Thank you for visitinng us.</h3>
+    	<div class="container">
+        <input type="button" class="btn btn-info" name="findGeolocation" value="Find Geolocation" onclick="getPosition()" />
+        <input type="button" class="btn btn-info" name="clearmap" value="Clear Map" onclick="clearMap()" />
+    		<!--<h3 style="color: white;">Thank you for visitinng us.</h3>-->
     	</div><!-- /footer -->
 
     </div><!-- /page -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC20D-gdEsFaKjwkaVSWc7FvnxpNq5iiCE&callback=myMap"></script>
   </body>
 </html>
