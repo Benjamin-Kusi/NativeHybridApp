@@ -33,12 +33,14 @@
     <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
     <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
+    <preference name="android-minSdkVersion" value="14" />
 
 
     <!-- Plugins -->
 
     <!-- Core plugins -->
     <plugin name="cordova-plugin-geolocation" />
+    <plugin name="cordova.plugins.diagnostic" />
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
@@ -65,6 +67,7 @@
     <gap:splash src="res/screen/ios/screen-ipad-portrait.png"           gap:platform="ios"     width="768" height="1024" />
     <gap:splash src="res/screen/ios/screen-ipad-landscape.png"          gap:platform="ios"     width="1024" height="768" />
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
+    <gap:plugin name="cordova.plugins.diagnostic.api-22" source="plugins.cordova.io" />
 
 
     <!--

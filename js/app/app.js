@@ -5,40 +5,16 @@
 document.addEventListener("deviceready", getPosition, false);
 
 
-//We decide to create a function to handle the 3rd party functions (eg. navigator.geolocation.getCurrentPosition)
-// which we earlier added to the native functions of the javascript
-/*function onDeviceReady() {
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
-}*/
-
-// onSuccess Geolocation
-//
-
-/*var lat, lng;
-function onSuccess(position) {
-
-    var element = document.getElementById('geolocation');
-    element.innerHTML = 'Latitude: ' + position.coords.latitude  + '<br />' +
-        'Longitude: '          + position.coords.longitude             + '<br />' +
-        'Altitude: '           + position.coords.altitude              + '<br />' +
-        'Accuracy: '           + position.coords.accuracy              + '<br />' +
-        'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
-        'Heading: '            + position.coords.heading               + '<br />' +
-        'Speed: '              + position.coords.speed                 + '<br />' +
-        'Timestamp: '          + position.timestamp          + '<br />';
-        lat = position.coords.latitude;
-        lng = position.coords.longitude;
-        alert(lat+"................."+lng);
-}*/
-
-// onError Callback receives a PositionError object
-//
-
+/*onError Callback receives a PositionError object
+ We decide to create a function to handle the 3rd party functions 
+ (eg. navigator.geolocation.getCurrentPosition)
+ which we earlier added to the native functions of the javascript*/
 function onError(error) {
     alert('code: '    + error.code    + '\n' +
         'message: ' + error.message + '\n');
 }
 
+/*getPosition returns the current position in the map*/
 function getPosition(){
     navigator.geolocation.getCurrentPosition(initMap,onError);
 }
@@ -46,6 +22,8 @@ function getPosition(){
 
 
 var map, marker, locationPoint, infoWindowOption, infoWindow;
+
+/*initMap places a location icon on the mao based on the device's location*/
 function initMap(position){
     if (navigator.geolocation) {
         var mapOptions = {
@@ -55,25 +33,27 @@ function initMap(position){
         };
         locationPoint = {position: mapOptions['center']};
         infoWindowOption = {content: 'You are here!'}
+
+        //calling google map
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
         
+        //adding the location marker icon
         marker = new google.maps.Marker(locationPoint);
         marker.setMap(map);
 
+        //adding a description to tell yuser is.
         infoWindow = new google.maps.InfoWindow(infoWindowOption);
         google.maps.event.addListener(marker,'click', function(e){
             infoWindow.open(map, marker);
         });
 
-       // function(){
-        //handleLocationError(true, infoWindow, map.getCenter());
-        //}
     }else{
         //Browser doesn't support Geolocation
         handleLocationError(false,infoWindow, map.getCenter());
     }
 }
 
+/*handleLocationError checks whether the deveice's location was successful or not*/
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
@@ -82,10 +62,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.open(map);
 }
 
+/*clearMap makes the map displayed currently to disappear*/
 function clearMap(){
     var element = document.getElementById('map');
     element.innerHTML = "<center><b><h1>Map was cleared successfully!</h1></b></center>";
 }
-
-/*Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-startActivity(intent);*/
